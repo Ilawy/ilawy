@@ -1,0 +1,268 @@
+* {
+    scrollbar-gutter: stable;
+}
+
+@media screen and (prefers-color-scheme: light) {
+    :root {
+        --bg: white;
+        --fg: #010101;
+
+        /* colors */
+        --purple: theme('colors.purple.300');
+        --red: theme('colors.red.300');
+        --red-fg: black;
+        --blue: theme('colors.blue.300');
+        --blue-fg: black;
+
+    }
+
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1a1a1a;
+        --fg: white;
+
+        /* colors */
+        --purple: theme('colors.purple.400');
+        --purple-fg: black;
+        --red: theme('colors.red.300');
+        --red-fg: black;
+        --blue: theme('colors.blue.300');
+        --blue-fg: black;
+    }
+}
+
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+.css-glyph {
+    @apply px-2;
+    position: relative;
+
+    &::after {
+        content: attr(data-glyph);
+        position: absolute;
+        top: -80%;
+        right: 1%;
+    }
+
+}
+
+.card {
+    opacity: 0;
+    animation: fade-with-blur 0.5s calc(var(--i) * 0.1s) ease-in-out forwards;
+}
+
+@keyframes from-bottom {
+    from {
+        transform: translateX(-10%);
+    }
+
+    to {
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+@keyframes fade-with-blur {
+    from {
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+        visibility: visible;
+    }
+}
+
+.css-section {
+    margin-top: theme(size.8);
+
+    &>.title {
+        @apply text-xl mb-4;
+    }
+}
+
+
+a[href] {
+    text-decoration: underline;
+
+    &[target="_blank"]::after {
+        content: "↗";
+        font-size: smaller;
+        translate: 0 -10px;
+        display: inline-block;
+    }
+}
+
+.css-container {
+    max-width: 70ch;
+}
+
+
+.card-p {
+    background: var(--purple, gray);
+    color: var(--purple-fg, var(--fg));
+}
+
+.card-b {
+    background: var(--blue);
+    color: var(--blue-fg, var(--fg));
+}
+
+.card-r {
+    background: var(--red);
+    color: var(--red-fg, var(--fg));
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    /* width of the scrollbar */
+    height: 10px;
+    /* height of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg);
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--bg) 60%, purple 40%);
+    border-color: purple;
+
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--fg);
+    border-radius: 10px;
+}
+
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+
+}
+
+span::first-letter {
+    text-transform: capitalize;
+}
+
+body {
+    font-family: 'Roboto Condensed', serif;
+}
+
+
+@keyframes hide {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+/* hide timeline scrollbar */
+
+.timeline::-webkit-scrollbar {
+    display: none;
+}
+
+.timeline {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: auto;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #7a7a7a;
+        width: 100%;
+        height: 2px;
+        z-index: -1;
+    }
+
+
+    .short-term {
+        margin-left: 2rem;
+    }
+
+    .mid-term {
+        margin-left: 4rem;
+    }
+
+    .long-term {
+        margin-left: 8rem;
+    }
+
+
+    li {
+        position: relative;
+    }
+
+    .dot {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        display: block;
+        border-radius: 50%;
+        background: var(--purple);
+        color: var(--purple-fg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        border: 3px solid transparent;
+        cursor: pointer;
+
+        &:has(:checked) {
+            border-color: var(--purple);
+
+            &~.info {
+                animation: fade-with-blur 0.5s ease-in-out forwards;
+                pointer-events: initial;
+            }
+        }
+
+        &:not(:has(:checked)) {
+            &~.info {
+                animation: hide 0.5s ease-in-out forwards;
+            }
+        }
+
+    }
+
+    .info {
+        @apply shadow-lg;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+        width: max-content;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 30;
+        padding: 1rem;
+        background: var(--bg);
+        color: var(--fg);
+        border: 1px solid #7a7a7a;
+        border-radius: theme('borderRadius.xl');
+        max-width: 52ch;
+        word-break: break-all;
+        text-wrap: balance;
+
+
+    }
+}

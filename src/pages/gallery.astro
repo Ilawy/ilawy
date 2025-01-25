@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import x from "../components/gallery/text_morph.html?url"
+console.log(x);
+
+---
+
+<Layout>
+    <h1
+        transition:name="root_title"
+        class="my-8 relative"
+        style="animation: fade-with-blur 1s, from-bottom 0.250s;"
+    >
+        <b>
+            <i>Gallery</i>
+        </b>
+    </h1>
+    {x}
+    <embed src={x} />
+</Layout>

@@ -1,11 +1,223 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+	{
+		title: "VVire",
+		class: "card-p",
+		description:
+			"A simple micro blogging platform, with Telegram as auth target and basic editing features",
+		links: [
+			{
+				label: "Visit",
+				attributes: {
+					href: "https://vvire.vercel.app",
+					target: "_blank",
+				},
+			},
+			{
+				label: "Source",
+				attributes: {
+					href: "https://github.com/ilawy/vvire",
+					target: "_blank",
+				},
+			},
+		],
+	},
+	{
+		title: "AngularECommerce",
+		class: "card-r",
+		description: "E-commerce app with features like cart, rating system.",
+		links: [
+			{
+				label: "Visit",
+				attributes: {
+					href: "https://angular-ecommerce.ilawy.xyz",
+					target: "_blank",
+				},
+			},
+			{
+				label: "Source",
+				attributes: {
+					href: "https://github.com/ilawy/angular-ecommerce",
+					target: "_blank",
+				},
+			},
+		],
+	},
+	{
+		title: "myLane",
+		class: "card-b hidden",
+		description:
+			"Customer queue manager, with arabic TTS and simple UI for both customers and employees.",
+		links: [
+			{
+				label: "Source",
+				attributes: {
+					href: "https://github.com/4ov/waiter",
+					target: "_blank",
+				},
+			},
+		],
+	},
+];
+
+interface TimePoint {
+	label: string;
+	title: string;
+	description: string;
+	duration: "short-term" | "mid-term" | "long-term" | "";
+}
+
+const timeline: TimePoint[] = [
+	{
+		label: "🎓",
+		title: "Sept 2019",
+		description: "Graduated from High School",
+		duration: "",
+	},
+	{
+		label: "🎓",
+		title: "May 2023",
+		description: "Graduated from Law School, Ain Shams University",
+		duration: "mid-term",
+	},
+	{
+		label: "💼",
+		title: "Sept 2023",
+		description:
+			"Worked as a sales advisor for technology products, <a href='https://2b.com.eg' target='_blank'>2B</a>",
+		duration: "short-term",
+	},
+	{
+		label: "⚐",
+		title: "Oct 2024",
+		description:
+			"Joined <a href='https://iti.gov.eg' target='_blank'>ITI</a>, Open source application development track",
+		duration: "short-term",
+	},
+];
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<h1
+		transition:name="root_title"
+		class="my-8 relative"
+		style="animation: fade-with-blur 1s, from-bottom 0.250s;"
+	>
+		<b>
+			<i>Mohammed Amr</i>
+		</b>
+	</h1>
+	<p class="text-balance" style="animation: fade-with-blur 1s;">
+		A software developer based in Egypt with
+		<span class="css-glyph" data-glyph="✧">passion</span> to always learn new
+		things. currently I'm studying at <a
+			href="https://iti.gov.eg"
+			target="_blank">ITI</a
+		>, where I'm deeply exploring a lot of technical topics.
+	</p>
+	<p style="animation: fade-with-blur 1s;">
+		I'm available for short-term freelance projects. What's on your mind?
+	</p>
+
+	<section class="css-section">
+		<h2 class="title" style="animation: fade-with-blur 1s;">
+			Timeline
+			<small>Click to reveal</small>
+		</h2>
+		<ul class="timeline">
+			{
+				timeline.map((point) => (
+					<li class={point.duration}>
+						<label class="dot" tabindex="0">
+							<input type="checkbox" class="opacity-0 absolute" />
+							{point.label}
+						</label>
+						<div class="info" transition:name="timeline_info">
+							<b>{point.title}</b>
+							<p set:html={point.description} />
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section class="css-section">
+		<h2 class="title" style="animation: fade-with-blur 1s;">Projects</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+			{
+				projects.map((project, i) => (
+					<div
+						style={`--i:${i}`}
+						class={`card w-full p-3 rounded-xl flex flex-col gap-3 card-p ${project.class} transition-all will-change-transform border-3 hover:scale-105
+							`}
+					>
+						<h3 class="font-bold">{project.title}</h3>
+						<p>{project.description}</p>
+						<div class="flex items-center gap-2 mt-auto">
+							{project.links &&
+								project.links.map((link) => {
+									return (
+										<a {...link.attributes}>{link.label}</a>
+									);
+								})}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</section>
 </Layout>
+
+<script>
+	import { computePosition, flip, shift, offset } from "@floating-ui/dom";
+
+	const inputs = document.querySelectorAll(
+		".dot input",
+	) as NodeListOf<HTMLInputElement>;
+	inputs.forEach((input) => {
+		input.addEventListener("click", () => {
+			const button = input.parentElement as HTMLLabelElement;
+			const tooltip = button.nextElementSibling as HTMLDivElement;
+
+			const outsideHandler = (ev: MouseEvent) => {
+				if (
+					ev.composedPath().includes(button) ||
+					ev.composedPath().includes(tooltip)
+				) {
+					console.log("inside");
+				} else {
+					console.log("outside");
+
+					input.checked = false;
+				}
+			};
+
+			window.addEventListener("click", outsideHandler);
+
+			inputs.forEach((i) => (i.checked = i === input));
+
+			computePosition(button, tooltip, {
+				placement: "bottom-start",
+				middleware: [
+					offset(10),
+					flip(),
+					shift({
+						padding: 5,
+					}),
+				],
+			}).then(({ x, y }) => {
+				Object.assign(tooltip.style, {
+					left: `${x}px`,
+					top: `${y}px`,
+				});
+			});
+		});
+	});
+</script>
