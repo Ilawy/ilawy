@@ -266,3 +266,13 @@ body {
 
     }
 }
+
+
+
+
+/* MARK: KEYFRAMES
+*/
+.fade-with-blur-kf {
+    opacity: 0;
+    animation: fade-with-blur 0.5s calc(var(--i) * 0.1s) ease-in-out forwards;
+}

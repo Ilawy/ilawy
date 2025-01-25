@@ -132,8 +132,8 @@ const timeline: TimePoint[] = [
 		</h2>
 		<ul class="timeline">
 			{
-				timeline.map((point) => (
-					<li class={point.duration}>
+				timeline.map((point, i) => (
+					<li class={`${point.duration} fade-with-blur-kf`} style={`--i:${i}`}>
 						<label class="dot" tabindex="0">
 							<input type="checkbox" class="opacity-0 absolute" />
 							{point.label}
