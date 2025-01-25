@@ -186,6 +186,9 @@ const timeline: TimePoint[] = [
 			const button = input.parentElement as HTMLLabelElement;
 			const tooltip = button.nextElementSibling as HTMLDivElement;
 
+			console.log(button);
+			
+
 			const outsideHandler = (ev: MouseEvent) => {
 				if (
 					ev.composedPath().includes(button) ||
@@ -204,7 +207,7 @@ const timeline: TimePoint[] = [
 			inputs.forEach((i) => (i.checked = i === input));
 
 			computePosition(button, tooltip, {
-				placement: "bottom-start",
+				placement: "bottom-end",
 				middleware: [
 					offset(10),
 					flip(),
@@ -212,6 +215,7 @@ const timeline: TimePoint[] = [
 						padding: 5,
 					}),
 				],
+				strategy: "absolute",
 			}).then(({ x, y }) => {
 				Object.assign(tooltip.style, {
 					left: `${x}px`,

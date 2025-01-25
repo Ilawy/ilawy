@@ -250,8 +250,8 @@ body {
         @apply shadow-lg;
         transition: opacity 0.5s ease-in-out;
         opacity: 0;
-        width: max-content;
-        position: fixed;
+        position: absolute;
+        width: 32ch;
         top: 0;
         left: 0;
         pointer-events: none;
@@ -276,4 +276,9 @@ body {
 .fade-with-blur-kf {
     opacity: 0;
     animation: fade-with-blur 0.5s calc(var(--i) * 0.1s) ease-in-out forwards;
+}
+
+
+body, html{
+    overflow-x: hidden;
 }
