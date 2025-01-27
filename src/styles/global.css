@@ -93,7 +93,7 @@ body {
 a[href] {
     text-decoration: underline;
 
-    &[target="_blank"]::after {
+    &[target="_blank"]:not([data-no-icon])::after {
         content: "↗";
         font-size: smaller;
         translate: 0 -10px;

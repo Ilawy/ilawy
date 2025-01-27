@@ -1,10 +1,11 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
+import GhIcon from "../components/icons/ghIcon.astro";
+import LinkedInIcon from "../components/icons/linkedInIcon.astro";
 interface Props {
 	title: string;
 }
-
 ---
 
 <!doctype html>
@@ -16,17 +17,37 @@ interface Props {
 		<meta name="generator" content={Astro.generator} />
 		<title>Mohammed Amr - {Astro.props.title}</title>
 		<ClientRouter />
-
 	</head>
 	<body>
 		<header class="backdrop-blur-sm p-6 fixed w-full z-10">
-			<div class="css-container mx-auto">
+			<div
+				class="css-container mx-auto flex items-center flex-wrap gap-2"
+			>
+				<a
+					class="flex items-center gap-2"
+					href="https://github.com/ilawy"
+					target="_blank"
+					data-no-icon
+				>
+					Github
+				</a>
+				<a
+					class="flex items-center gap-2"
+					href="https://github.com/ilawy"
+					target="_blank"
+					data-no-icon
+				>
+					LinkedIn
+				</a>
 			</div>
 		</header>
-		<main class="css-main css-container mx-auto h-full min-h-[100svh] p-3 flex flex-col">
+		<main
+			class="css-main css-container mx-auto h-full min-h-[100svh] p-3 flex flex-col"
+		>
 			<slot />
 			<footer class="mt-auto p-3 flex items-center justify-between">
-				<span>Mohammed Amr</span> <span>2025 ● <span>All rights reserved</span></span>
+				<span>Mohammed Amr</span>
+				<span>2025 ● <span>All rights reserved</span></span>
 			</footer>
 		</main>
 	</body>
