@@ -211,6 +211,11 @@ body {
     li {
         position: relative;
         z-index: 30;
+        cursor: pointer;
+
+        input {
+            cursor: pointer;
+        }
 
     }
 
@@ -279,6 +284,7 @@ body {
 }
 
 
-body, html{
+body,
+html {
     overflow-x: hidden;
 }
