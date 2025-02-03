@@ -91,7 +91,7 @@ const timeline: TimePoint[] = [
 		duration: "short-term",
 	},
 	{
-		label: "⚐",
+		label: "🏳️",
 		title: "Oct 2024",
 		description:
 			"Joined <a href='https://iti.gov.eg' target='_blank'>ITI</a>, Open source application development track",
@@ -186,18 +186,13 @@ const timeline: TimePoint[] = [
 			const button = input.parentElement as HTMLLabelElement;
 			const tooltip = button.nextElementSibling as HTMLDivElement;
 
-			console.log(button);
 			
 
 			const outsideHandler = (ev: MouseEvent) => {
 				if (
-					ev.composedPath().includes(button) ||
-					ev.composedPath().includes(tooltip)
+					!(ev.composedPath().includes(button) ||
+					ev.composedPath().includes(tooltip))
 				) {
-					console.log("inside");
-				} else {
-					console.log("outside");
-
 					input.checked = false;
 				}
 			};

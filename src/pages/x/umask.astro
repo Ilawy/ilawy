@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import UmaskReact from '../../components/x/umask'
+---
+
+<Layout title="Umask tool">
+    <main class="my-8">
+        <h1 transition:name="root_title" class="my-8 relative flex items-center gap-4">
+            <a href="/">← Back</a>
+			<b> Linux umask calculator </b>
+        </h1>
+        <UmaskReact client:only />
+    </main>
+</Layout>
+
+
+<style is:global>
+	.custom-input:has(input:invalid) .error-message{
+		transform: translateY(0);
+		opacity: 1 !important;
+		pointer-events: all;
+		filter: blur(0);
+	}
+</style>
