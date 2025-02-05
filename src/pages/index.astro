@@ -133,12 +133,15 @@ const timeline: TimePoint[] = [
 		<ul class="timeline">
 			{
 				timeline.map((point, i) => (
-					<li class={`${point.duration} fade-with-blur-kf`} style={`--i:${i}`}>
+					<li
+						class={`${point.duration} fade-with-blur-kf`}
+						style={`--i:${i}`}
+					>
 						<label class="dot" tabindex="0">
 							<input type="checkbox" class="opacity-0 absolute" />
 							{point.label}
 						</label>
-						<div class="info" transition:name="timeline_info">
+						<div class="info">
 							<b>{point.title}</b>
 							<p set:html={point.description} />
 						</div>
@@ -186,12 +189,12 @@ const timeline: TimePoint[] = [
 			const button = input.parentElement as HTMLLabelElement;
 			const tooltip = button.nextElementSibling as HTMLDivElement;
 
-			
-
 			const outsideHandler = (ev: MouseEvent) => {
 				if (
-					!(ev.composedPath().includes(button) ||
-					ev.composedPath().includes(tooltip))
+					!(
+						ev.composedPath().includes(button) ||
+						ev.composedPath().includes(tooltip)
+					)
 				) {
 					input.checked = false;
 				}
