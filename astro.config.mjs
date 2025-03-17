@@ -1,5 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+// const postcssCustomMedia = require('postcss-custom-media');
+import postcssCustomMedia from 'postcss-custom-media'
+import postcssLightDarkFunction from '@csstools/postcss-light-dark-function'
 
 import tailwind from '@astrojs/tailwind';
 
@@ -12,13 +15,23 @@ import { whyframeAstro } from '@whyframe/astro'
 export default defineConfig({
   integrations: [tailwind(), react()],
   vite: {
+    css: {
+      postcss: {
+        plugins: [
+          postcssCustomMedia({
+          preserve: true
+        }), 
+        postcssLightDarkFunction(),
+      ]
+      }
+    },
     plugins: [
-      whyframe({
-        defaultSrc: "/frames/default"
-      }),
-      whyframeAstro({
-        defaultFramework: 'react'
-      })
+      // whyframe({
+      //   defaultSrc: "/frames/default"
+      // }),
+      // whyframeAstro({
+      //   defaultFramework: 'react'
+      // })
     ]
   }
 });

@@ -3,69 +3,70 @@ import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import GhIcon from "../components/icons/ghIcon.astro";
 import LinkedInIcon from "../components/icons/linkedInIcon.astro";
+import MobileHeader from "../components/mobileHeader";
 interface Props {
-	title: string;
+  title: string;
 }
+
+const links = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Gallery",
+    href: "/gallery",
+  },
+];
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mohammed Amr - {Astro.props.title}</title>
-		<ClientRouter />
-	</head>
-	<body>
-		<header class="backdrop-blur-sm p-6 fixed w-full z-10">
-			<div
-				class="css-container mx-auto flex items-center flex-wrap gap-2"
-			>
-				<a
-					class="flex items-center gap-2"
-					href="https://github.com/ilawy"
-					target="_blank"
-					data-no-icon
-				>
-					Github
-				</a>
-				<a
-					class="flex items-center gap-2"
-					href="https://www.linkedin.com/in/ilawy/"
-					target="_blank"
-					data-no-icon
-				>
-					LinkedIn
-				</a>
-			</div>
-		</header>
-		<main
-			class="css-main css-container mx-auto h-full min-h-[100svh] p-3 flex flex-col"
-		>
-			<slot />
-			<footer class="mt-auto p-3 flex items-center justify-between">
-				<span>
-					<a href="/x/umask">Linux mask preview</a>
-				</span>
-				<span>2025 ● <span>All rights reserved</span></span>
-			</footer>
-		</main>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Mohammed Amr - {Astro.props.title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <ClientRouter />
+  </head>
+  <body class="flex flex-col lg:flex-row p-3">
+    <MobileHeader links={links} client:visible />
+
+    <header class="py-5 flex-col w-36 hidden lg:flex gap-4">
+      <a href="/" class="bg-[--primary] text-[--primary-content] p-3 text-center">hello</a>
+    </header>
+    <main
+      class="css-main css-container flex-1 h-full min-h-[100svh] p-3 flex flex-col before:w-[150%] before:bg-yellow-200]"
+    >
+      <slot />
+      <footer class="mt-auto p-3 flex items-center justify-between">
+        <span>
+          <a href="/x/umask">Linux mask preview</a>
+        </span>
+        <span>2025 ● <span>All rights reserved</span></span>
+      </footer>
+    </main>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100%;
-		margin: auto;
-		line-height: 1.75;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+    line-height: 1.75;
+  }
 
-	.css-main {
+  /* .css-main {
 		padding: 3em 1em;
-	}
+	} */
 </style>
