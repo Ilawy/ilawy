@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function MobileHeader({
   links,
 }: {
@@ -8,9 +8,15 @@ export default function MobileHeader({
   }[];
 }) {
   const [open, setOpen] = useState(false);
+  useEffect(()=>{
+    document.addEventListener('astro:before-swap', ()=>{
+        setOpen(false)
+    })
+    return ()=>{}
+  }, [])
   return (
     <>
-      <div className={`mobile-overlay ${open && "open"}`} onPointerDown={()=>setOpen(false)}></div>
+      <div className={`mobile-overlay lg:hidden ${open && "open"}`} onPointerDown={()=>setOpen(false)}></div>
       <header className="flex flex-col lg:hidden p-3 sticky top-0 left-0 z-50 pointer-events-none">
         <button
           onClick={() => setOpen(!open)}
@@ -50,7 +56,6 @@ export default function MobileHeader({
                 key={link.href + Math.random()}
                 href={link.href}
                 className="item"
-                onClick={()=>setOpen(false)}
               >
                 {link.label}
               </a>

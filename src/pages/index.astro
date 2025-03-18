@@ -28,12 +28,13 @@ const projects = [
   {
     title: "Quotobia",
     class: "card-r",
-    description: "Quotobia is a MEAN stack bookstore for browsing, orders, real-time updates, and secure authentication.",
+    description:
+      "Quotobia is a MEAN stack bookstore for browsing, orders, real-time updates, and secure authentication.",
     links: [
       {
         label: "Visit",
         attributes: {
-          href: "github.com/o-some-sad/qutobia",
+          href: "https://quotobia.o-sad.org/",
           target: "_blank",
         },
       },
@@ -49,7 +50,8 @@ const projects = [
   {
     title: "Employee Attendance",
     class: "card-g",
-    description: "A management system using PHP and SQLite, to help a facility manage its employees status and attendance",
+    description:
+      "A management system using PHP and SQLite, to help a facility manage its employees status and attendance",
     links: [
       {
         label: "Source",
@@ -130,6 +132,14 @@ const timeline: TimePoint[] = [
         </a>
         <a
           class="flex items-center gap-2"
+          href="mailto:next.mohammed.amr@gmail.com"
+          target="_blank"
+          data-no-icon
+        >
+          Email
+        </a>
+        <a
+          class="flex items-center gap-2"
           href="https://www.linkedin.com/in/ilawy/"
           target="_blank"
           data-no-icon
@@ -142,6 +152,17 @@ const timeline: TimePoint[] = [
   <section class="max-w-[70ch] p-3 mx-auto w-full">
     <div class="profile-card">
       <div class="style-frame"></div>
+      <h2 class="text-2xl">Who Am I</h2>
+      <p class="text-balance">
+        A human, from Egypt, went to law school and graduated in 2023, since then, I'm started learning about what i really like, which is software engineering.
+        Now, I'm studying at the <a href="https://iti.gov.eg" target="_blank">ITI</a>, open source application development track.
+        currently finding good and challenging freelancing opportunities to work on, so if you have a good idea, let us do magic, <a href="mailto:next.mohammed.amr@gmail.com">send me a mail</a>
+      </p>
+    </div>
+  </section>
+  <section class="max-w-[70ch] p-3 mx-auto w-full">
+    <div class="profile-card">
+      <div class="style-frame"></div>
       <h2 class="text-2xl">Projects</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {
@@ -149,16 +170,12 @@ const timeline: TimePoint[] = [
             return (
               <div class={`rounded-2xl bg-lime-300 p-3 ${project.class}`}>
                 <b>{project.title}</b>
-                <p class="text-balance">
-                  {project.description}
-                </p>
-				<div class="flex flex-wrap">
-					{project.links.map(link=>{
-						return <a {...link.attributes}>
-							{link.label}
-						</a>
-					})}
-				</div>
+                <p class="text-balance">{project.description}</p>
+                <div class="flex flex-wrap">
+                  {project.links.map((link) => {
+                    return <a {...link.attributes}>{link.label}</a>;
+                  })}
+                </div>
               </div>
             );
           })

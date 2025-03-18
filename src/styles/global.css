@@ -4,18 +4,18 @@
   font-optical-sizing: auto;
 }
 
-
-
 /* @custom-media --media-dark (prefers-color-scheme: dark); */
 :root {
   color-scheme: light dark;
 
-  --primary: light-dark(#36e, #ee3);
-  --primary-content: red;
+  --bg: light-dark(#f6f6f6, #212121);
+    
+  --primary: light-dark(#212121, #eee);
+  --primary-content: light-dark(white, #212121);
 }
+
 @media screen and (prefers-color-scheme: light) {
   :root {
-    --bg: white;
     --fg: #010101;
 
     /* colors */
@@ -31,7 +31,6 @@
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
-    --bg: #1a1a1a;
     --fg: white;
 
     /* colors */
@@ -102,13 +101,6 @@ body {
 
 a[href] {
   text-decoration: underline;
-
-  &[target="_blank"]:not([data-no-icon])::after {
-    content: "↗";
-    font-size: smaller;
-    translate: 0 -10px;
-    display: inline-block;
-  }
 }
 
 .css-container {
@@ -293,7 +285,7 @@ html {
   position: relative;
   @apply p-4 mt-6;
 
-  &::before {
+  &:first-child::before {
     /* top */
     @apply bg-current;
     content: "";
@@ -381,35 +373,38 @@ html {
   rotate: 45deg;
 }
 
-.mobile-overlay{
-    background: transparent;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 40;
-    pointer-events: none;
-    transition: 500ms;
-    &.open{
-        background: rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(4px);
-        pointer-events: initial;
-    }
+.mobile-overlay {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  pointer-events: none;
+  transition: 500ms;
+  &.open {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    pointer-events: initial;
+  }
 }
 
 .mobile-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  translate: 0 30%;
+  position: relative;
   background: white;
-  display: flex;
-  border: 1px solid;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(0, 1fr);
+  /* border: 1px solid; */
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+  border-radius: theme("borderRadius.xl");
   margin-top: 1rem;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.25rem;
   width: 100%;
   z-index: 50;
   transition: 525ms cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -426,6 +421,7 @@ html {
     background: black;
     color: white;
     flex: 1;
+    text-decoration: none;
     padding: theme("padding.3");
     /* flex-1 p-3 */
   }

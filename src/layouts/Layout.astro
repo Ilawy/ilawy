@@ -39,8 +39,20 @@ const links = [
   <body class="flex flex-col lg:flex-row p-3">
     <MobileHeader links={links} client:visible />
 
-    <header class="py-5 flex-col w-36 hidden lg:flex gap-4">
-      <a href="/" class="bg-[--primary] text-[--primary-content] p-3 text-center">hello</a>
+    <header class="desktop-header">
+      {
+        links.map((link) => (
+          <a
+		  transition:persist
+
+            data-route={link.href}
+            href={link.href}
+            class="header-item p-3 text-center !no-underline"
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </header>
     <main
       class="css-main css-container flex-1 h-full min-h-[100svh] p-3 flex flex-col before:w-[150%] before:bg-yellow-200]"
@@ -69,4 +81,48 @@ const links = [
   /* .css-main {
 		padding: 3em 1em;
 	} */
+
+  .desktop-header {
+    @apply flex-col w-36 hidden lg:flex gap-4 justify-center items-center border-r;
+	position: sticky;
+	top: 0;
+    .header-item {
+      width: 100%;
+      translate: -2ch 0;
+	  transition: 325ms;
+      &[data-active] {
+        translate: 0 0;
+        &::before {
+          opacity: 1;
+        }
+      }
+      &::before {
+        content: "->";
+        opacity: 0;
+      }
+    }
+  }
 </style>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+  import { URLPattern } from "urlpattern-polyfill";
+  document.addEventListener("astro:page-load", (ev) => {
+    const currentPath = location.pathname;
+    console.log(
+      document
+        .querySelectorAll("a[data-route]")
+        .forEach((a: HTMLAnchorElement) => {
+          const result = new URLPattern({ pathname: a.dataset.route }).exec({
+            pathname: currentPath,
+          });
+		  if(result){
+			a.dataset.active = "true"
+		  }else{
+			delete a.dataset.active
+		  }
+		  
+        })
+    );
+  });
+</script>
