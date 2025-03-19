@@ -43,8 +43,7 @@ const links = [
       {
         links.map((link) => (
           <a
-		  transition:persist
-
+            transition:persist
             data-route={link.href}
             href={link.href}
             class="header-item p-3 text-center !no-underline"
@@ -83,13 +82,13 @@ const links = [
 	} */
 
   .desktop-header {
-    @apply flex-col w-36 hidden lg:flex gap-4 justify-center items-center border-r;
-	position: sticky;
-	top: 0;
+    @apply flex-col w-36 hidden lg:flex gap-4 h-fit sticky mt-8 items-center border-r;
+    position: sticky;
+    top: 0;
     .header-item {
       width: 100%;
       translate: -2ch 0;
-	  transition: 325ms;
+      transition: 325ms;
       &[data-active] {
         translate: 0 0;
         &::before {
@@ -105,23 +104,22 @@ const links = [
 </style>
 
 <script>
-  import { navigate } from "astro:transitions/client";
   import { URLPattern } from "urlpattern-polyfill";
   document.addEventListener("astro:page-load", (ev) => {
     const currentPath = location.pathname;
     console.log(
       document
         .querySelectorAll("a[data-route]")
-        .forEach((a: HTMLAnchorElement) => {
+        .forEach((a: Element) => {
+          if(!(a instanceof HTMLAnchorElement))return;
           const result = new URLPattern({ pathname: a.dataset.route }).exec({
             pathname: currentPath,
           });
-		  if(result){
-			a.dataset.active = "true"
-		  }else{
-			delete a.dataset.active
-		  }
-		  
+          if (result) {
+            a.dataset.active = "true";
+          } else {
+            delete a.dataset.active;
+          }
         })
     );
   });

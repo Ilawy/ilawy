@@ -393,9 +393,7 @@ html {
 .mobile-menu {
   position: relative;
   background: white;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(0, 1fr);
+  display: flex;
   /* border: 1px solid; */
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
     0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
@@ -415,6 +413,17 @@ html {
     filter: blur(0);
     opacity: 1;
     pointer-events: all !important;
+
+    .item{
+      opacity: 0;
+      filter: blur(3px);
+      animation: show 500ms calc(var(--i) * 100ms) forwards;
+    }
+  }
+  
+  &:not(.open) .item{
+    animation: hide 1s calc(var(--i) * 0.1s) forwards;
+    
   }
 
   .item {
@@ -423,6 +432,26 @@ html {
     flex: 1;
     text-decoration: none;
     padding: theme("padding.3");
+    transition: 325ms;
     /* flex-1 p-3 */
+  }
+}
+
+
+@keyframes show {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+    filter: blur(0);
+
+  }
+}
+
+@keyframes hide {
+  to{
+    opacity: 0;
+    filter: blur(5px);
   }
 }

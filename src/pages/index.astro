@@ -108,12 +108,12 @@ const timeline: TimePoint[] = [
   <section class="max-w-[70ch] p-3 mx-auto w-full">
     <div class="profile-card">
       <div class="style-frame"></div>
-      <img
+      <!-- <img
         src="https://i.pravatar.cc/150?img=57"
         width="128"
         class="mb-6"
         alt=""
-      />
+      /> -->
       <h1 class="text-4xl" transition:name="my-name">Mohammed Amr</h1>
       <h3 class="text-sm">Junior Fullstack Developer</h3>
       <p class="text-balance">
@@ -128,7 +128,7 @@ const timeline: TimePoint[] = [
           target="_blank"
           data-no-icon
         >
-          Github
+          GitHub
         </a>
         <a
           class="flex items-center gap-2"
@@ -171,7 +171,7 @@ const timeline: TimePoint[] = [
               <div class={`rounded-2xl bg-lime-300 p-3 ${project.class}`}>
                 <b>{project.title}</b>
                 <p class="text-balance">{project.description}</p>
-                <div class="flex flex-wrap">
+                <div class="flex gap-3 flex-wrap">
                   {project.links.map((link) => {
                     return <a {...link.attributes}>{link.label}</a>;
                   })}
