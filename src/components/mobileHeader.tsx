@@ -7,7 +7,7 @@ export default function MobileHeader({
     href: string;
   }[];
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   useEffect(()=>{
     document.addEventListener('astro:before-swap', ()=>{
         setOpen(false)
@@ -50,12 +50,16 @@ export default function MobileHeader({
         
         `}
         >
-          {links.map((link) => {
+          {links.map((link, i) => {
             return (
               <a
                 key={link.href + Math.random()}
                 href={link.href}
                 className="item"
+                style={{
+                  //@ts-ignore
+                  "--i": i
+                }}
               >
                 {link.label}
               </a>

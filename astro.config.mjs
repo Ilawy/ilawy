@@ -26,12 +26,12 @@ export default defineConfig({
       }
     },
     plugins: [
-      // whyframe({
-      //   defaultSrc: "/frames/default"
-      // }),
-      // whyframeAstro({
-      //   defaultFramework: 'react'
-      // })
+      whyframe({
+        defaultSrc: "/frames/default"
+      }),
+      whyframeAstro({
+        // defaultFramework: 'react'
+      })
     ]
   }
 });
