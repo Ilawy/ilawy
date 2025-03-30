@@ -7,7 +7,7 @@ export default function MobileHeader({
     href: string;
   }[];
 }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   useEffect(()=>{
     document.addEventListener('astro:before-swap', ()=>{
         setOpen(false)
