@@ -1,4 +1,5 @@
 ---
+import ProductCard from "../components/projectCard";
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -164,19 +165,11 @@ const timeline: TimePoint[] = [
     <div class="profile-card">
       <div class="style-frame"></div>
       <h2 class="text-2xl">Projects</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 relative">
         {
           projects.map((project) => {
             return (
-              <div class={`rounded-2xl bg-lime-300 p-3 ${project.class}`}>
-                <b>{project.title}</b>
-                <p class="text-balance">{project.description}</p>
-                <div class="flex gap-3 flex-wrap">
-                  {project.links.map((link) => {
-                    return <a {...link.attributes}>{link.label}</a>;
-                  })}
-                </div>
-              </div>
+              <ProductCard {project} client:load />
             );
           })
         }

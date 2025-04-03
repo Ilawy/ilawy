@@ -9,7 +9,7 @@
   color-scheme: light dark;
 
   --bg: light-dark(#f6f6f6, #212121);
-    
+
   --primary: light-dark(#212121, #eee);
   --primary-content: light-dark(white, #212121);
 }
@@ -404,6 +404,8 @@ html {
   gap: 1rem;
   padding: 1.25rem;
   width: 100%;
+  max-height: 0;
+  overflow: hidden;
   z-index: 50;
   transition: 525ms cubic-bezier(0.215, 0.61, 0.355, 1);
   filter: blur(6px);
@@ -413,17 +415,17 @@ html {
     filter: blur(0);
     opacity: 1;
     pointer-events: all !important;
+    max-height: 500px;
 
-    .item{
+    .item {
       opacity: 0;
       filter: blur(3px);
       animation: show 500ms calc(var(--i) * 100ms) forwards;
     }
   }
-  
-  &:not(.open) .item{
+
+  &:not(.open) .item {
     animation: hide 1s calc(var(--i) * 0.1s) forwards;
-    
   }
 
   .item {
@@ -437,20 +439,18 @@ html {
   }
 }
 
-
 @keyframes show {
-  from{
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
     filter: blur(0);
-
   }
 }
 
 @keyframes hide {
-  to{
+  to {
     opacity: 0;
     filter: blur(5px);
   }
