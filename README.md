@@ -79,11 +79,11 @@
 ## <img src="https://media.giphy.com/media/ZCN6F3FAkwsyOGU2RS/giphy.gif" width="30"> GitHub Stats
 
 <p align="center">
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=ilawy&show_icons=true&theme=tokyonight" alt="ilawy" />
-  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=ilawy&hide_border=true&theme=tokyonight" alt="GitHub Streak"/>
+  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=ilawy&show_icons=true&theme=day" alt="ilawy" />
+  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=ilawy&hide_border=true&theme=day" alt="GitHub Streak"/>
 </p>
 <p align="center">
-  <img width="41%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ilawy&layout=compact&theme=tokyonight" alt="Top Languages" />
+  <img width="41%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ilawy&layout=compact&theme=day" alt="Top Languages" />
 </p>
 
 ---
@@ -92,7 +92,7 @@
 
 <div align="center">
 
-![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=ilawy&theme=radical&no-frame=true&row=2&column=4)
+![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=ilawy&theme=day&no-frame=true&row=2&column=4)
 
 </div>
 
