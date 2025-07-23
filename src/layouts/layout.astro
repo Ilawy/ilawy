@@ -1,0 +1,43 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "../global.css";
+import Nav from "@/components/self/nav";
+import { RetroGrid } from "@/components/magicui/retro-grid";
+
+interface Props {
+  nobg?: boolean;
+  title?: string;
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{Astro.props.title || "Mohammed Amr"}</title>
+    <ClientRouter />
+  </head>
+  <body class="">
+    {!Astro.props.nobg && <RetroGrid className="fixed inset-0 -z-10" />}
+    <main class="container mx-auto m-6 max-w-2xl p-6 rounded-2xl z-50">
+      <Nav client:load />
+      <slot />
+    </main>
+    <script>
+      const tc = (fn: CallableFunction, df: any) => {
+        try {
+          return fn();
+        } catch {
+          return df;
+        }
+      };
+      // apply current theme on body
+      const theme = tc(
+        () => JSON.parse(localStorage.getItem("theme") || `"system"`),
+        "system"
+      );
+      document.body.classList.add(theme);
+    </script>
+  </body>
+</html>

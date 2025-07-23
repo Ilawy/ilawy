@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/layout.astro";
+import { getCollection } from "astro:content";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
+
+console.log();
+
+const thoughts = await getCollection("thoughts").then((items) => {
+  return items.sort((a, b) => {
+    const aDate = dayjs(a.data.uat || a.data.iat, ["DD-MM-YYYY", "MM-YYYY"]);
+    const bDate = dayjs(b.data.uat || b.data.iat, ["DD-MM-YYYY", "MM-YYYY"]);
+    return bDate.diff(aDate);
+  });
+});
+---
+
+<Layout nobg>
+  <a href="/" class="underline">Go home</a>
+  <h1 class="text-3xl font-bold">Thoughts</h1>
+  <section class="flex flex-col gap-6 mt-6">
+    {
+      thoughts.map((thought) => (
+        <a href={`/t/${thought.id}`} class="contents">
+          <div class="p-3 rounded-lg border">
+            <p class="text-xl font-bold">{thought.data.title}</p>
+            <div class="text-sm italic">
+              {dayjs(thought.data.uat || thought.data.iat, [
+                "DD-MM-YYYY",
+                "MM-YYYY",
+              ]).format("D MMMM, YYYY")}{" "}
+              <span class="border text-xs px-3 py-1 inline-block bg-accent text-accent-foreground rounded-full">
+                {thought.data.tag || "General"}
+              </span>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </section>
+</Layout>
