@@ -1,6 +1,6 @@
 @import "../node_modules/@devnomic/marquee/dist/index.css";
 @import "tailwindcss";
-/* @plugin "@tailwindcss/typography"; */
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

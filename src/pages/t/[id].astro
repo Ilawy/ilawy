@@ -6,11 +6,11 @@ import Layout from "@/layouts/layout.astro";
 import { getCollection, render } from "astro:content";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const posts = await getCollection("thoughts");
-  return posts.map((post) => ({
-    params: { id: post.id },
-    props: { post },
-  }));
+    const posts = await getCollection("thoughts");
+    return posts.map((post) => ({
+        params: { id: post.id },
+        props: { post },
+    }));
 }
 // 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
@@ -18,20 +18,21 @@ const { Content, remarkPluginFrontmatter } = await render(post);
 ---
 
 <Layout nobg title={remarkPluginFrontmatter.title}>
-  <a href="/t" class="underline">View all thoughts</a>
-  <article class="prose">
-    <h1 class="text-3xl">{post.data.title}</h1>
-    {
-      dayjs(post.data.uat || post.data.iat, ["DD-MM-YYYY", "MM-YYYY"]).format(
-        "D MMMM, YYYY"
-      )
-    }
-    {" "}
-    <span
-      class="border text-xs px-3 py-1 inline-block bg-accent text-accent-foreground rounded-full"
-    >
-      {post.data.tag || "General"}
-    </span>
-    <Content />
-  </article>
+    <a href="/t" class="underline">View all thoughts</a>
+    <article class="prose dark:prose-invert">
+        <h1 class="text-3xl">{post.data.title}</h1>
+        {
+            dayjs(post.data.uat || post.data.iat, [
+                "DD-MM-YYYY",
+                "MM-YYYY",
+            ]).format("D MMMM, YYYY")
+        }
+        {" "}
+        <span
+            class="border text-xs px-3 py-1 inline-block bg-accent text-accent-foreground rounded-full"
+        >
+            {post.data.tag || "General"}
+        </span>
+        <Content />
+    </article>
 </Layout>
