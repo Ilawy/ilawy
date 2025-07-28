@@ -6,7 +6,7 @@ import { education, workExperience, projects } from "../data";
 ---
 
 <Layout>
-  <section class="flex items-center mb-12">
+  <section class="flex items-center flex-col-reverse md:flex-row mb-12">
     <div class="flex-1">
       <h1 class="text-3xl flex items-center">Hello, Human</h1>
       <h2 class="text-2xl font-bold">This is Mohammed Amr</h2>
@@ -17,8 +17,10 @@ import { education, workExperience, projects } from "../data";
         everyone
       </p>
     </div>
-    <div class="">
-      <div class="w-16 h-16 rounded-full bg-purple-500"></div>
+    <div
+      class="w-24 h-24 rounded-full overflow-hidden border-4 _avatar_gradient"
+    >
+      <img src="/me.png" class="object-cover scale-150" />
     </div>
   </section>
   <section>
@@ -80,7 +82,7 @@ import { education, workExperience, projects } from "../data";
       <!-- card -->
       {
         projects.map((project) => (
-          <div class="gradient-border-container break-inside-avoid-column w-auto">
+          <div class="gradient-border-container break-inside-avoid-column w-full">
             <div class="border bg-accent text-accent-foreground hover:shadow-2xl rounded-2xl flex flex-col h-full flex-1">
               <div class="p-3 flex flex-col gap-3 flex-1">
                 <div class="flex items-center justify-between">

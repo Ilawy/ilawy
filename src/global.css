@@ -170,10 +170,11 @@
 }
 
 @media (hover) and (pointer: fine) {
+
     /* i'm visible only on non-touch screens */
     ._projects {
         &:has(div:hover) {
-            & > div:not(:hover) {
+            &>div:not(:hover) {
                 filter: brightness(0.5);
             }
         }
@@ -200,4 +201,24 @@
             3px 3px 40px 5px #4dffbe70;
         filter: brightness(1);
     }
+}
+
+
+._avatar_gradient {
+    animation: avatar_gradient 13s linear infinite;
+}
+
+@keyframes avatar_gradient {
+    0% {
+        border-color: gray;
+    }
+
+    50% {
+        border-color: gainsboro;
+    }
+
+    100% {
+        border-color: gray;
+    }
+
 }
