@@ -19,7 +19,7 @@ Hi, I'm Mohammed Amr, a passionate software engineer with a focus on building we
 ‎ ‎ ‎ ‎ ‎ 
 <a target="_blank" href="https://ilawy.xyz">
     ‎ ‎ 
-    <img src="https://icongr.am/material/web.svg?size=36&color=eeeeee" />
+    <img src="https://icongr.am/material/web.svg?size=36&color=3366ee" />
     ‎ ‎ 
 </a>
 </center>
