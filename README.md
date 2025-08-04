@@ -1,6 +1,9 @@
 
 ![#](./public/rm-banner.png)
 
+## About Me
+Hi, I'm Mohammed Amr, a passionate software engineer with a focus on building web applications. I enjoy solving complex problems and creating unique web experiences, for all users.
+
 <center style="vertical-align:baseline;">
 <a target="_blank" href="https://linkedin.com/in/ilawy">
     ‎ ‎ 
