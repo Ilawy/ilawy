@@ -33,15 +33,6 @@ Frontend engineer based in Cairo, Egypt. Currently at **Vodafone Egypt**, workin
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=o-some-sad&repo=qutobia&hide_border=true" />
 </a>
 
-## GitHub stats
-
-<a href="https://github.com/Ilawy">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=Ilawy&show_icons=true&hide_border=true&rank_icon=github" />
-</a>
-<a href="https://github.com/Ilawy">
-  <img align="center" src="https://streak-stats.demolab.com?user=Ilawy&hide_border=true" />
-</a>
-
 ## Contact
 
 **[LinkedIn](https://linkedin.com/in/ilawy)** · **[ilawy.dev](https://ilawy.dev)** · **[next.mohammed.amr@gmail.com](mailto:next.mohammed.amr@gmail.com)**
