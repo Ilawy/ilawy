@@ -44,22 +44,4 @@ Frontend engineer based in Cairo, Egypt. Currently at **Vodafone Egypt**, workin
 
 ## Contact
 
-<center style="vertical-align:baseline;">
-<a target="_blank" href="https://linkedin.com/in/ilawy">
-    ‎ ‎ 
-    <img src="https://icongr.am/simple/linkedin.svg?size=36&colored=true" />
-    ‎ 
-</a>
-‎ ‎ ‎ ‎ ‎ 
-<a target="_blank" href="mailto:next.mohammed.amr@gmail.com">
-    ‎ ‎ 
-    <img src="https://icongr.am/simple/gmail.svg?size=36&colored=true" />
-    ‎ 
-</a>
-‎ ‎ ‎ ‎ ‎ 
-<a target="_blank" href="https://ilawy.dev">
-    ‎ ‎ 
-    <img src="https://icongr.am/material/web.svg?size=36&color=3366ee" />
-    ‎ ‎ 
-</a>
-</center>
+**[LinkedIn](https://linkedin.com/in/ilawy)** · **[ilawy.dev](https://ilawy.dev)** · **[next.mohammed.amr@gmail.com](mailto:next.mohammed.amr@gmail.com)**
